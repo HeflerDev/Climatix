@@ -1,0 +1,30 @@
+{
+  "name": "climatix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeflerDev/Climatix.git"
+  },
+  "author": "HeflerDev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HeflerDev/Climatix/issues"
+  },
+  "homepage": "https://github.com/HeflerDev/Climatix#readme",
+  "dependencies": {
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.3.0",
+    "style-loader": "^1.3.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  }
+}
