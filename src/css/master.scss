@@ -1,6 +1,6 @@
-$body-color: red;
+@import  './reset.css' ;
+@import './framework.css' ;
 
-body {
-    color: $body-color;
-    height: 20px;
+#search-form {
+    display:none;
 }
