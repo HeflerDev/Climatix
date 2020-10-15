@@ -1,5 +1,5 @@
 import './css/master.scss';
-
+import displayController from './controllers/displayController';
 
 
 /* async function doWork() {

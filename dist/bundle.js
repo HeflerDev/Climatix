@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_cjs_js_reset_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! -!../../node_modules/css-loader/dist/cjs.js!./reset.css */ \"./node_modules/css-loader/dist/cjs.js!./src/css/reset.css\");\n/* harmony import */ var _node_modules_css_loader_dist_cjs_js_framework_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! -!../../node_modules/css-loader/dist/cjs.js!./framework.css */ \"./node_modules/css-loader/dist/cjs.js!./src/css/framework.css\");\n// Imports\n\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(false);\n___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_reset_css__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\n___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_framework_css__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\n// Module\n___CSS_LOADER_EXPORT___.push([module.i, \"#search-form {\\n  display: none;\\n}\", \"\"]);\n// Exports\n/* harmony default export */ __webpack_exports__[\"default\"] = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack:///./src/css/master.scss?./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_cjs_js_reset_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! -!../../node_modules/css-loader/dist/cjs.js!./reset.css */ \"./node_modules/css-loader/dist/cjs.js!./src/css/reset.css\");\n/* harmony import */ var _node_modules_css_loader_dist_cjs_js_framework_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! -!../../node_modules/css-loader/dist/cjs.js!./framework.css */ \"./node_modules/css-loader/dist/cjs.js!./src/css/framework.css\");\n// Imports\n\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(false);\n___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_reset_css__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\n___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_framework_css__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\n// Module\n___CSS_LOADER_EXPORT___.push([module.i, \"#search-form {\\n  border: solid #282828 2px;\\n}\\n\\n.submit-btn {\\n  border: solid #282828 2px;\\n  cursor: pointer;\\n}\", \"\"]);\n// Exports\n/* harmony default export */ __webpack_exports__[\"default\"] = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack:///./src/css/master.scss?./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -146,6 +146,18 @@ eval("\n\nvar isOldIE = function isOldIE() {\n  var memo;\n  return function mem
 
 /***/ }),
 
+/***/ "./src/controllers/displayController.js":
+/*!**********************************************!*\
+  !*** ./src/controllers/displayController.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _views_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/forms */ \"./src/views/forms.js\");\n\n\nconst displayController = (() => {\n\n    function gatherData() {\n        return new Promise((resolve, reject) => {\n            setTimeout(() => resolve(1), 1000);\n            const countryData = document.getElementById('country-input').value ;\n            const cityData = document.getElementById('city-input').value ;\n            if (cityData) {\n                resolve({countryData, cityData});\n            } else {\n                reject('Invalid Data Input')\n            }\n        });\n    };\n\n    function submitFormData() {\n        gatherData().then((obj) => {\n            return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${obj.cityData}&APPID=72317f5668bade497a7edbd246f2df82`);\n        })\n        .then((response) => {\n            if (response.ok) {\n                return response;\n            } else {\n                throw new Error(\"Can't find City\");\n            }\n        }).catch((err) => {\n            console.log(err);\n        })\n    };\n\n    async function displaySearchForm() {\n        if (! document.getElementById('search-form')) {\n            const form = await _views_forms__WEBPACK_IMPORTED_MODULE_0__[\"default\"].search();\n            form.submitBtn.addEventListener('click', submitFormData);\n        } else {\n            alert('Form Already Displayed');\n        }\n    };\n\n    document.getElementById('show-form-btn').addEventListener('click', displaySearchForm);\n\n    return { };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (displayController);\n\n\n\n//# sourceURL=webpack:///./src/controllers/displayController.js?");
+
+/***/ }),
+
 /***/ "./src/css/master.scss":
 /*!*****************************!*\
   !*** ./src/css/master.scss ***!
@@ -165,7 +177,31 @@ eval("var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/run
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_master_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/master.scss */ \"./src/css/master.scss\");\n/* harmony import */ var _css_master_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_master_scss__WEBPACK_IMPORTED_MODULE_0__);\n\n\n\n\n/* async function doWork() {\n *  try {\n *      something\n *  } catch (err) {\n *      console.log(err);\n *  }\n * }\n\n/*\nfetch('http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=72317f5668bade497a7edbd246f2df82')\n    .then(res => {\n        if (res.ok) {\n            // Success\n        } else {\n            // Failure\n        }\n    })\n    .then(data => console.log(data))\n    // .catch(console.log('ERROR'))\n//\n//\n*/\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_master_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/master.scss */ \"./src/css/master.scss\");\n/* harmony import */ var _css_master_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_master_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _controllers_displayController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./controllers/displayController */ \"./src/controllers/displayController.js\");\n\n\n\n\n/* async function doWork() {\n *  try {\n *      something\n *  } catch (err) {\n *      console.log(err);\n *  }\n * }\n\n/*\nfetch('http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=72317f5668bade497a7edbd246f2df82')\n    .then(res => {\n        if (res.ok) {\n            // Success\n        } else {\n            // Failure\n        }\n    })\n    .then(data => console.log(data))\n    // .catch(console.log('ERROR'))\n//\n//\n*/\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/views/forms.js":
+/*!****************************!*\
+  !*** ./src/views/forms.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _render__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./render */ \"./src/views/render.js\");\n\n\nconst forms = (() => {\n    const search = () => {\n        _render__WEBPACK_IMPORTED_MODULE_0__[\"default\"].container('search-form-container',  'content', 'box', 'div');\n            _render__WEBPACK_IMPORTED_MODULE_0__[\"default\"].container('search-form', 'search-form-container', 'flex-grid', 'div');\n                _render__WEBPACK_IMPORTED_MODULE_0__[\"default\"].container('country-label', 'search-form', 'col-3', 'label').textContent = 'ifsf';\n                _render__WEBPACK_IMPORTED_MODULE_0__[\"default\"].container('country-input', 'search-form', 'col-3', 'input');\n                _render__WEBPACK_IMPORTED_MODULE_0__[\"default\"].container('city-label', 'search-form', 'col-3', 'label');\n                _render__WEBPACK_IMPORTED_MODULE_0__[\"default\"].container('city-input', 'search-form', 'col-3', 'input');\n                const submitBtn = _render__WEBPACK_IMPORTED_MODULE_0__[\"default\"].container('city-input', 'search-form', ['col-12', 'submit-btn']);\n                submitBtn.textContent = 'Submit'\n        return { submitBtn }\n    }\n    return { search };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (forms);\n\n\n//# sourceURL=webpack:///./src/views/forms.js?");
+
+/***/ }),
+
+/***/ "./src/views/render.js":
+/*!*****************************!*\
+  !*** ./src/views/render.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst render = (() => {\n\n    const container = (elementId, elementParent, elementClass = null, element = 'div') => {\n        const div = document.createElement(element);\n\n        if (elementId) {\n          div.id = elementId;\n        }\n        // elementParent = userData.convertToValidId(elementParent);\n\n        if (elementClass) {\n          if (Array.isArray(elementClass)) {\n            elementClass.forEach((item) => {\n              div.classList.add(item);\n            });\n          } else {\n            div.classList.add(elementClass);\n          }\n        }\n        console.log(div.id);\n        document.getElementById(elementParent).appendChild(div);\n        return div;\n      };\n\n    return { container };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (render);\n\n\n//# sourceURL=webpack:///./src/views/render.js?");
 
 /***/ })
 

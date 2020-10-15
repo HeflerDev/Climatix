@@ -1,6 +1,24 @@
 @import  './reset.css' ;
 @import './framework.css' ;
 
+$color-primary-dark: rgb(40, 40, 40);
+$color-secondary-dark: rgb(80,80,80);
+$color-primary: rgb(100,100,100);
+$color-secondary: rgb(140,140, 140);
+$color-accent: rgb(220, 220, 220);
+
+$border-primary: solid $color-primary-dark 2px;
+
+
 #search-form {
-    display:none;
+    border: $border-primary;
+}
+
+.submit-btn {
+    border: $border-primary;
+    cursor: pointer;
+}
+
+.accent-btn {
+
 }
