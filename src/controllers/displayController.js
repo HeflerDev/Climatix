@@ -1,4 +1,5 @@
 import forms from '../views/forms'
+import content from '../views/content'
 
 const displayController = (() => {
 
@@ -15,25 +16,42 @@ const displayController = (() => {
         });
     };
 
-    function submitFormData() {
+    async function displaySearchResult(temp) {
+        await content.forecast(temp);
+    }
+
+    function handleForm() {
         gatherData().then((obj) => {
-            return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${obj.cityData}&APPID=72317f5668bade497a7edbd246f2df82`);
-        })
-        .then((response) => {
-            if (response.ok) {
-                return response;
-            } else {
-                throw new Error("Can't find City");
-            }
+            fetch(`http://api.openweathermap.org/data/2.5/weather?q=${obj.cityData}&APPID=72317f5668bade497a7edbd246f2df82`)
+            .then((res) => {
+                if (res.ok) {
+                    return res.json()
+                } else {
+                    throw new Error('Invalid City')
+                }
+            }).then(data => {
+                const temp = data.main.temp;
+                const feelsLike = data.main.feels_like;
+                const minTemp = data.main.temp_min;
+                const maxTemp = data.main.temp_max;
+                const humidity = data.main.humidity;
+                displaySearchResult({
+                    temp,
+                    feelsLike,
+                    minTemp,
+                    maxTemp,
+                    humidity,
+                });
+            })
         }).catch((err) => {
-            console.log(err);
+            console.error(err);
         })
     };
 
     async function displaySearchForm() {
         if (! document.getElementById('search-form')) {
             const form = await forms.search();
-            form.submitBtn.addEventListener('click', submitFormData);
+            form.submitBtn.addEventListener('click', handleForm);
         } else {
             alert('Form Already Displayed');
         }

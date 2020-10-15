@@ -18,7 +18,7 @@ const render = (() => {
           }
         }
         console.log(div.id);
-        document.getElementById(elementParent).appendChild(div);
+        document.getElementById(elementParent).append(div);
         return div;
       };
 
