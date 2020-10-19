@@ -2,12 +2,11 @@ import render from './render';
 
 const forms = (() => {
     const search = () => {
+
         render.container('search-form-container',  'content', 'box', 'div');
             render.container('search-form', 'search-form-container', 'flex-grid', 'form');
-                render.container('country-label', 'search-form', null, 'label').textContent = 'Country';
-                render.container('country-input', 'search-form', ['col-12', 'col-m-6', 'col-l-3', 'field-input'], 'input');
                 render.container('city-label', 'search-form', null, 'label').textContent = 'City';
-                render.container('city-input', 'search-form', ['col-12', 'col-m-6', 'col-l-3', 'field-input'], 'input');
+                const selectCity = render.container('city-input', 'search-form', ['col-12', 'col-m-6', 'col-l-3', 'field-input'], 'input');
                 render.container('radio-buttons-container', 'search-form', ['minibox', 'around']);
 
                 render.container('radio-kelvin', 'radio-buttons-container', ['minibox', 'center']);
@@ -35,6 +34,7 @@ const forms = (() => {
                 const submitBtn = render.container('city-input', 'search-form', ['col-12', 'submit-btn']);
                 submitBtn.textContent = 'Submit'
         return { submitBtn }
+
     }
     return { search };
 })();

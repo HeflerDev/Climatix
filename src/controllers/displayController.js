@@ -6,11 +6,10 @@ const displayController = (() => {
     function gatherData() {
         return new Promise((resolve, reject) => {
             setTimeout(() => resolve(1), 1000);
-            const countryData = document.getElementById('country-input').value ;
             const cityData = document.getElementById('city-input').value ;
             const measureUnit = document.querySelector('input[name="measure"]:checked').value;
             if (cityData) {
-                resolve({countryData, cityData, measureUnit});
+                resolve({cityData, measureUnit});
             } else {
                 reject('Invalid Data Input')
             }
@@ -18,8 +17,8 @@ const displayController = (() => {
     };
 
     async function displaySearchResult(temp) {
-        document.getElementById('search-form-container').remove();
         await content.forecast(temp);
+        document.getElementById('search-form-container').remove();
         content.removeLoading();
     }
 

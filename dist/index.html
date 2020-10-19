@@ -3,9 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel='stylesheet' href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="stylesheets/geodatasource-countryflag.css">
-    <link rel='gettext' type='application/x-po' href='languages/en/LC_MESSAGES/en.po'>
 </head>
 <body>
     <header>
@@ -19,13 +16,48 @@
         </div>
 
         <section id="content">
+<!--
+        <div id="search-form-container" class="box">
 
+            <form id="search-form" class="flex-grid">
+
+                <label>Country</label>
+                <select class="gds-cr gds-countryflag" country-data-region-id="gds-cr-find"></select>
+
+                <label>Region</label>
+                <select id="gds-cr-find" region-data-city-id="gds-cr-find-city"></select>
+
+                <label for="city-input">City</label>
+                <select id="gds-cr-find-city"></select>
+
+
+                <div id="radio-btns-container" class="minibox around">
+                    <div id="radio-kelvin" class="minibox center">
+                        <input id="input-kelvin" type="radio" value='K' name='measure' checked='checked'>
+                        <label for="input-kelvin">Kelvin</label>
+                    </div>
+                    <div id="radio-celsius" class="minibox center">
+                        <input id="input-celsius" type="radio" value='C' name='measure'>
+                        <label for="input-celsius">Celsius</label>
+                    </div>
+                    <div id="radio-faren" class="minibox center">
+                        <input id="input-faren" type="radio" value='F' name='measure'>
+                        <label for="input-faren">Farenheit</label>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+
+            Country: <select class="gds-cr gds-countryflag" country-data-region-id="gds-cr-example"></select>
+
+
+            City: <select id="gds-cr-example" ></select>
+        </p>
+-->
         </section>
     </main>
-    <script src="scripts/geodatasource-cr.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="scripts/Gettext.js"></script>
     <script src='bundle.js'></script>
 </body>
 </html>
