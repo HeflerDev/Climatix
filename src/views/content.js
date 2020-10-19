@@ -2,6 +2,15 @@ import render from './render' ;
 
 const content = (() => {
 
+    function loading() {
+        render.container('loading-container', 'content', 'box');
+        render.container('loading', 'loading-container').textContent = 'Loading...';
+    };
+
+    function removeLoading() {
+        document.getElementById('loading-container').remove();
+    };
+
     const forecast = (obj) => {
         render.container('forecast-container', 'content', 'box')
         render.container('forecast-results', 'forecast-container', 'flex-grid')
@@ -28,7 +37,7 @@ const content = (() => {
             const humidity = render.container('forecast-humidity', 'forecast-humidity-container');
             humidity.textContent = obj.humidity;
     };
-    return { forecast }
+    return { forecast, loading, removeLoading }
 })();
 
 export default content;

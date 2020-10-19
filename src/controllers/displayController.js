@@ -18,7 +18,9 @@ const displayController = (() => {
     };
 
     async function displaySearchResult(temp) {
+        document.getElementById('search-form-container').remove();
         await content.forecast(temp);
+        content.removeLoading();
     }
 
     function convertValue(value, unit) {
@@ -38,6 +40,7 @@ const displayController = (() => {
     }
 
     function handleForm() {
+        content.loading();
         gatherData().then((obj) => {
             fetch(`http://api.openweathermap.org/data/2.5/weather?q=${obj.cityData}&APPID=72317f5668bade497a7edbd246f2df82`)
             .then((res) => {
@@ -52,8 +55,6 @@ const displayController = (() => {
                 const minTemp = convertValue(data.main.temp_min, obj.measureUnit);
                 const maxTemp = convertValue(data.main.temp_max, obj.measureUnit);
                 const humidity = data.main.humidity;
-
-
                 if (data.main.feels_like > data.main.temp) {
                     const oldData = feelsLike;
                     feelsLike = `...but feels warmer, measuring ${oldData}`;
@@ -63,7 +64,6 @@ const displayController = (() => {
                 } else {
                     feelsLike = 'The temperature and the feeling match';
                 }
-
                 displaySearchResult({
                     temp,
                     feelsLike,
