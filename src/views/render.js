@@ -17,7 +17,6 @@ const render = (() => {
             div.classList.add(elementClass);
           }
         }
-        console.log(div.id);
         document.getElementById(elementParent).append(div);
         return div;
       };

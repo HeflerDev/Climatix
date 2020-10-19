@@ -1,5 +1,11 @@
 @import  './reset.css' ;
 @import './framework.css' ;
+// Fonts Import
+//Zilla Slab
+//Megrim
+@import url('https://fonts.googleapis.com/css2?family=Megrim&family=Trade+Winds&display=swap');
+
+$break-md: 768px;
 
 $color-primary-dark: rgb(40, 40, 40);
 $color-secondary-dark: rgb(80,80,80);
@@ -7,18 +13,112 @@ $color-primary: rgb(100,100,100);
 $color-secondary: rgb(140,140, 140);
 $color-accent: rgb(220, 220, 220);
 
-$border-primary: solid $color-primary-dark 2px;
+$border-primary: solid $color-primary-dark 1px;
+$border-secondary: solid $color-secondary 1px;
+$border-discreet: solid $color-secondary 1px;
+
+$radius-primary: 0.4rem;
+
+$font-zilla-slab: 'Zilla Slab', serif;
+$font-megrim: 'Megrim', cursive;
+
+#forecast-container {
+    #forecast-results {
+        #forecast-temp-container {
+            #forecast-temp-desc{
+                font-family: $font-zilla-slab;
+                color: $color-primary;
+                font-size: 1.2rem;
+            }
+            #forecast-temp {
+                font-family: $font-megrim;
+                font-size: 10rem;
+                @media screen and (max-device-width: $break-md) {
+                    font-size: 5rem;
+                }
+            }
+        }
+    }
+}
 
 
-#search-form {
-    border: $border-primary;
+.btn-primary {
+    border-radius: $radius-primary;
+    transition: 0.1s;
+    width: 75%;
+    color: $color-secondary;
+    font-family: $font-zilla-slab;
+    border:none;
+    &:hover{
+        color: $color-accent;
+        transition: 0.4s;
+        background-color: $color-primary-dark;
+        transform: scale(1.05);
+    }
+    &:focus{
+        color: $color-accent;
+        transition: 0.4s;
+        background-color: $color-primary-dark;
+        transform: scale(1.05);
+        outline:none;
+    }
 }
 
 .submit-btn {
+    transition:0.1s;
+    font-family: $font-zilla-slab;
+    margin: 10px;
     border: $border-primary;
     cursor: pointer;
+    &:hover {
+        transition: 0.1s;
+        border: $border-secondary;
+        color: $color-secondary;
+    }
 }
 
 .accent-btn {
 
+}
+
+.data-container {
+    border: $border-primary;
+}
+
+form{
+    justify-content:center;
+    label {
+        font-family: $font-zilla-slab;
+        color: $color-primary-dark;
+        margin-bottom: 0;
+    }
+    .field-input {
+        font-family: $font-zilla-slab;
+        transition: 0.5s;
+        border: none;
+        border-bottom: $border-secondary;
+        &:focus {
+            transition: 0.5s;
+            outline:none;
+            border-bottom: $border-primary;
+        }
+
+    }
+}
+
+header {
+    display:flex;
+    justify-content:center;
+    span {
+        color: $color-primary;
+        transition: 0.2s;
+        font-family: $font-megrim;
+        font-size: 2rem;
+        cursor: pointer;
+        &:hover{
+            color: $color-primary-dark;
+            transition: 0.2s;
+            transform: scale(1.1);
+        }
+    }
 }
