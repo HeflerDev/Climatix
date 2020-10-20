@@ -22,6 +22,18 @@ const displayController = (() => {
         content.removeLoading();
     }
 
+    function swapSearchBtnText() {
+        const check = document.getElementById('show-form-btn');
+        if (check.textContent = 'Search') {
+            check.textContent = 'Make another search';
+        }
+    }
+
+    function removeResultIfPresent() {
+        const check = document.getElementById('forecast-container');
+        if (check) { check.remove() }
+    };
+
     function convertValue(value, unit) {
         try {
             if (unit === 'C') {
@@ -44,8 +56,12 @@ const displayController = (() => {
             fetch(`http://api.openweathermap.org/data/2.5/weather?q=${obj.cityData}&APPID=72317f5668bade497a7edbd246f2df82`)
             .then((res) => {
                 if (res.ok) {
+                    swapSearchBtnText();
+                    forms.removeErrors();
                     return res.json()
                 } else {
+                    content.removeLoading();
+                    forms.formError("Error: The search doesn't match any results");
                     throw new Error('Invalid City')
                 }
             }).then(data => {
@@ -72,11 +88,13 @@ const displayController = (() => {
                 });
             })
         }).catch((err) => {
+            content.removeLoading();
             console.error(err);
         })
     };
 
     async function displaySearchForm() {
+        removeResultIfPresent();
         if (! document.getElementById('search-form')) {
             const form = await forms.search();
             form.submitBtn.addEventListener('click', handleForm);

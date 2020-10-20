@@ -3,8 +3,10 @@ import render from './render' ;
 const content = (() => {
 
     function loading() {
-        render.container('loading-container', 'content', 'box');
-        render.container('loading', 'loading-container').textContent = 'Loading...';
+        if (! document.getElementById('loading-container')) {
+            render.container('loading-container', 'content', 'box');
+            render.container('loading', 'loading-container').textContent = 'Loading...';
+        }
     };
 
     function removeLoading() {

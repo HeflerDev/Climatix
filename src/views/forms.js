@@ -1,6 +1,20 @@
 import render from './render';
 
 const forms = (() => {
+
+    function formError(err) {
+        if (!document.getElementById('err-container')) {
+            render.container('err-container', 'content', ['box']);
+                const msg = render.container('err-msg', 'err-container', ['err-msg']);
+                msg.textContent = err;
+        }
+    }
+
+    function removeErrors() {
+        const element = document.getElementById('err-container');
+        if (element) { element.remove() };
+    }
+
     const search = () => {
 
         render.container('search-form-container',  'content', 'box', 'div');
@@ -36,7 +50,7 @@ const forms = (() => {
         return { submitBtn }
 
     }
-    return { search };
+    return { search, formError, removeErrors };
 })();
 
 export default forms;
