@@ -158,6 +158,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _vie
 
 /***/ }),
 
+/***/ "./src/controllers/styleController.js":
+/*!********************************************!*\
+  !*** ./src/controllers/styleController.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst styleController = (() => {\n    // Generate an Array of Colors for further use\n    function generateColorArray() {\n        let rgb = [[0, 0, 255]];\n\n        while (rgb.length < 255) {\n            let i = rgb.length;\n            rgb.push([i, 0, 255-i])\n        }\n        return rgb;\n    }\n\n    // Convert input to a usable data\n    function convertData(temp) {\n        let measure = Math.floor(temp - 273.15);\n        let mod = 5;\n        if (measure < 0) { measure = 0 };\n\n        // Incomplete\n\n    };\n\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (styleController);\n\n\n//# sourceURL=webpack:///./src/controllers/styleController.js?");
+
+/***/ }),
+
 /***/ "./src/css/master.scss":
 /*!*****************************!*\
   !*** ./src/css/master.scss ***!
@@ -177,7 +189,7 @@ eval("var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/run
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_master_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/master.scss */ \"./src/css/master.scss\");\n/* harmony import */ var _css_master_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_master_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _controllers_displayController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./controllers/displayController */ \"./src/controllers/displayController.js\");\n\n\n\n\n/* async function doWork() {\n *  try {\n *      something\n *  } catch (err) {\n *      console.log(err);\n *  }\n * }\n\n/*\nfetch('http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=72317f5668bade497a7edbd246f2df82')\n    .then(res => {\n        if (res.ok) {\n            // Success\n        } else {\n            // Failure\n        }\n    })\n    .then(data => console.log(data))\n    // .catch(console.log('ERROR'))\n//\n//\n*/\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_master_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./css/master.scss */ \"./src/css/master.scss\");\n/* harmony import */ var _css_master_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_master_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _controllers_displayController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./controllers/displayController */ \"./src/controllers/displayController.js\");\n/* harmony import */ var _controllers_styleController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controllers/styleController */ \"./src/controllers/styleController.js\");\n\n\n\n\n\n/* async function doWork() {\n *  try {\n *      something\n *  } catch (err) {\n *      console.log(err);\n *  }\n * }\n\n/*\nfetch('http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=72317f5668bade497a7edbd246f2df82')\n    .then(res => {\n        if (res.ok) {\n            // Success\n        } else {\n            // Failure\n        }\n    })\n    .then(data => console.log(data))\n    // .catch(console.log('ERROR'))\n//\n//\n*/\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
