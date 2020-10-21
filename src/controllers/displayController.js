@@ -19,7 +19,7 @@ const displayController = (() => {
 
     async function displaySearchResult(temp) {
         const containers = await content.forecast(temp);
-        styleController.applyStyle(containers.tempDiv, temp.value);
+        styleController.applyDinamicStyle(containers, temp.data);
 
 
         document.getElementById('search-form-container').remove();
@@ -89,7 +89,7 @@ const displayController = (() => {
                     minTemp,
                     maxTemp,
                     humidity,
-                    'value' : data.main.temp
+                    data
                 });
             })
         }).catch((err) => {
