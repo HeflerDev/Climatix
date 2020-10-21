@@ -42,11 +42,13 @@ const styleController = (() => {
 
         if (humidityLevel < 40) {
             elementObj.humidityDiv.style.backgroundColor = 'yellow';
+            elementObj.humidityDiv.style.color = 'darkyellow';
         } else if (humidityLevel < 60) {
-
             elementObj.humidityDiv.style.backgroundColor = 'lightgreen';
+            elementObj.humidityDiv.style.color = 'darkgreen';
         } else {
-            elementObj.humidityDiv.style.backgroundColor = 'lightblue';
+            elementObj.humidityDiv.style.background = 'lightblue url("../img/humidity.jpeg")';
+            elementObj.humidityDiv.style.color = 'darkblue';
         }
 
     }

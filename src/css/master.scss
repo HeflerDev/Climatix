@@ -20,6 +20,8 @@ $border-discreet: solid $color-secondary 1px;
 
 $radius-primary: 0.4rem;
 
+$margin-primary: 0.4rem;
+
 $font-zilla-slab: 'Zilla Slab', serif;
 $font-megrim: 'Megrim', cursive;
 
@@ -83,7 +85,8 @@ $font-megrim: 'Megrim', cursive;
 }
 
 .data-container {
-    border: $border-primary;
+    border-radius: $radius-primary;
+    margin: $margin-primary;
 }
 
 form{

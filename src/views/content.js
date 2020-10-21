@@ -24,12 +24,14 @@ const content = (() => {
             render.container('feelslike-info-container', 'forecast-temp-container', ['minibox']);
             render.container('feelslike-info', 'feelslike-info-container', 'start').textContent = obj.feelsLike;
 
-        const minTempDiv = render.container('forecast-mintemp-container', 'forecast-results', ['col-12', 'col-m-6', 'box', 'data-container']);
+        render.container('comparison-container', 'forecast-results', ['minibox', 'between']);
+
+        const minTempDiv = render.container('forecast-mintemp-container', 'comparison-container', ['col-12', 'col-m-6', 'box', 'data-container']);
             render.container('forecast-mintemp-desc', 'forecast-mintemp-container').textContent = 'MinTemp';
             const minTemp = render.container('forecast-mintemp', 'forecast-mintemp-container');
             minTemp.textContent = obj.minTemp;
 
-        const maxTempDiv = render.container('forecast-maxtemp-container', 'forecast-results', ['col-12', 'col-m-6', 'box', 'data-container']);
+        const maxTempDiv = render.container('forecast-maxtemp-container', 'comparison-container', ['col-12', 'col-m-6', 'box', 'data-container']);
             render.container('forecast-maxtemp-desc', 'forecast-maxtemp-container').textContent = 'Max Temp';
             const maxTemp = render.container('forecast-maxtemp', 'forecast-maxtemp-container');
             maxTemp.textContent = obj.maxTemp;
