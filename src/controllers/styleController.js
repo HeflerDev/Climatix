@@ -1,5 +1,5 @@
 const styleController = (() => {
-    // Generate an Array of Colors for further use
+
     function generateColorArray() {
         let rgb = [[0, 0, 255]];
 
@@ -10,15 +10,22 @@ const styleController = (() => {
         return rgb;
     }
 
-    // Convert input to a usable data
     function convertData(temp) {
         let measure = Math.floor(temp - 273.15);
         let mod = 5;
         if (measure < 0) { measure = 0 };
 
-        // Incomplete
-
+        const score = measure * mod ;
+        console.log(score);
+        return score;
     };
+
+    const applyStyle = (element, temp) => {
+        const score = convertData(temp);
+        const color = generateColorArray()[temp];
+        [red, green, blue] = color;
+        element.style.backgroundColor = `rgb(${red},${green},${blue})`
+    }
 
 })();
 
