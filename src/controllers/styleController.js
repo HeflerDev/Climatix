@@ -5,27 +5,28 @@ const styleController = (() => {
 
         while (rgb.length < 255) {
             let i = rgb.length;
-            rgb.push([i, 0, 255-i])
+            rgb.push([i, Math.floor(i/2), 255-i])
         }
         return rgb;
     }
 
     function convertData(temp) {
-        let measure = Math.floor(temp - 273.15);
+        let measure = Math.floor((temp - 273.15)* 1.6);
         let mod = 5;
         if (measure < 0) { measure = 0 };
-
-        const score = measure * mod ;
-        console.log(score);
-        return score;
+        if (measure > 50) { measure = 50 }
+        return measure * mod;
     };
 
     const applyStyle = (element, temp) => {
         const score = convertData(temp);
-        const color = generateColorArray()[temp];
-        [red, green, blue] = color;
+        const colors = generateColorArray();
+        const color = colors[score];
+        const [red, green, blue] = color;
         element.style.backgroundColor = `rgb(${red},${green},${blue})`
     }
+
+    return { applyStyle }
 
 })();
 

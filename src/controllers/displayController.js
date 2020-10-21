@@ -1,5 +1,6 @@
 import forms from '../views/forms'
 import content from '../views/content'
+import styleController from './styleController'
 
 const displayController = (() => {
 
@@ -17,7 +18,10 @@ const displayController = (() => {
     };
 
     async function displaySearchResult(temp) {
-        await content.forecast(temp);
+        const containers = await content.forecast(temp);
+        styleController.applyStyle(containers.tempDiv, temp.value);
+
+
         document.getElementById('search-form-container').remove();
         content.removeLoading();
     }
@@ -85,6 +89,7 @@ const displayController = (() => {
                     minTemp,
                     maxTemp,
                     humidity,
+                    'value' : data.main.temp
                 });
             })
         }).catch((err) => {
