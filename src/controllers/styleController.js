@@ -35,13 +35,13 @@ const styleController = (() => {
 
     const [red, green, blue] = colorTemperature;
     // elementObj.tempDiv.style.backgroundColor = `rgb(${red},${green},${blue})`
-    elementObj.tempDiv.style.color = `rgb(${green / 2},${green},${green / 2})`;
+    elementObj.tempDiv.style.color = `rgb(${red},${green},${blue})`;
 
     const [darkRed, darkGreen, darkBlue] = colorMinTemperature;
 
     const [lightRed, lightGreen, lightBlue] = colorMaxTemperature;
     elementObj.maxTempDiv.style.backgroundColor = `rgb(${lightRed},${lightGreen},${lightBlue})`;
-    elementObj.maxTempDiv.style.color = `rgb(${0},${green},${0})`;
+    elementObj.maxTempDiv.style.color = `rgb(${red/2},${60},${60})`;
     elementObj.minTempDiv.style.backgroundColor = `rgb(${darkRed},${darkGreen},${darkBlue})`;
     elementObj.minTempDiv.style.color = `rgb(${255},${green},${255})`;
 

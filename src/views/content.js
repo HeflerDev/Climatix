@@ -26,12 +26,12 @@ const content = (() => {
     render.container('comparison-container', 'forecast-results', ['minibox', 'between', 'no-spacing']);
 
     const minTempDiv = render.container('forecast-mintemp-container', 'comparison-container', ['col-12', 'col-m-6', 'box', 'data-container']);
-    render.container('forecast-mintemp-desc', 'forecast-mintemp-container').textContent = 'MinTemp';
+    render.container('forecast-mintemp-desc', 'forecast-mintemp-container').textContent = 'Minimum';
     const minTemp = render.container('forecast-mintemp', 'forecast-mintemp-container');
     minTemp.textContent = obj.minTemp;
 
     const maxTempDiv = render.container('forecast-maxtemp-container', 'comparison-container', ['col-12', 'col-m-6', 'box', 'data-container']);
-    render.container('forecast-maxtemp-desc', 'forecast-maxtemp-container').textContent = 'Max Temp';
+    render.container('forecast-maxtemp-desc', 'forecast-maxtemp-container').textContent = 'Maximum';
     const maxTemp = render.container('forecast-maxtemp', 'forecast-maxtemp-container');
     maxTemp.textContent = obj.maxTemp;
 

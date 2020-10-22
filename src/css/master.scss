@@ -62,6 +62,26 @@ body {
     }
 }
 
+#forecast-mintemp-container {
+    #forecast-mintemp {
+        font-family: $font-bebas;
+        font-size: 1.2rem;
+        @media screen and (min-device-width: $break-md){
+            font-size: 3rem;
+        }
+    }
+}
+
+#forecast-maxtemp-container {
+    #forecast-maxtemp {
+        font-family: $font-bebas;
+        font-size: 1.2rem;
+        @media screen and (min-device-width: $break-md){
+            font-size: 3rem;
+        }
+    }
+}
+
 .high-humidity {
     background-color: lightblue;;
     position: relative;
