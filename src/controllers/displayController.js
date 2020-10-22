@@ -54,7 +54,7 @@ const displayController = (() => {
   const handleForm = () => {
     content.loading();
     gatherData().then((obj) => {
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${obj.cityData}&APPID=72317f5668bade497a7edbd246f2df82`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${obj.cityData}&APPID=72317f5668bade497a7edbd246f2df82`)
         .then((res) => {
           if (res.ok) {
             swapSearchBtnText();
