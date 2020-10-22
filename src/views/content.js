@@ -24,7 +24,7 @@ const content = (() => {
             render.container('feelslike-info-container', 'forecast-temp-container', ['minibox']);
             render.container('feelslike-info', 'feelslike-info-container', 'start').textContent = obj.feelsLike;
 
-        render.container('comparison-container', 'forecast-results', ['minibox', 'between']);
+        render.container('comparison-container', 'forecast-results', ['minibox', 'between', 'no-spacing']);
 
         const minTempDiv = render.container('forecast-mintemp-container', 'comparison-container', ['col-12', 'col-m-6', 'box', 'data-container']);
             render.container('forecast-mintemp-desc', 'forecast-mintemp-container').textContent = 'MinTemp';

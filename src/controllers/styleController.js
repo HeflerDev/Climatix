@@ -23,32 +23,45 @@ const styleController = (() => {
         const minTemperatureScore = convertData(data.main.temp_min/1.01);
         const maxTemperatureScore = convertData(data.main.temp_max*1.01);
 
+        const lightPalette = convertData(data.main.temp*1.30);
+        const darkPalette = convertData(data.main.temp/1.30);
+
         const colors = generateColorArray();
 
         const colorTemperature = colors[temperatureScore];
         const colorMinTemperature = colors[minTemperatureScore];
         const colorMaxTemperature = colors[maxTemperatureScore];
+        const colorDarker = colors[darkPalette];
+        const colorLighter = colors[lightPalette];
+
+        const [darkerRed, darkerGreen, darkerBlue] = colorDarker;
+        const [lighterRed, lighterGreen, lighterBlue] = colorLighter;
 
         const [red, green, blue] = colorTemperature;
-        elementObj.tempDiv.style.backgroundColor = `rgb(${red},${green},${blue})`
+        // elementObj.tempDiv.style.backgroundColor = `rgb(${red},${green},${blue})`
+        elementObj.tempDiv.style.color = `rgb(${green/2},${green},${green/2})`
 
         const [darkRed, darkGreen, darkBlue] = colorMinTemperature;
-        elementObj.minTempDiv.style.backgroundColor = `rgb(${darkRed},${darkGreen},${darkBlue})`
 
         const [lightRed, lightGreen, lightBlue] = colorMaxTemperature;
         elementObj.maxTempDiv.style.backgroundColor = `rgb(${lightRed},${lightGreen},${lightBlue})`
+        elementObj.maxTempDiv.style.color = `rgb(${0},${green},${0})`
+        elementObj.minTempDiv.style.backgroundColor = `rgb(${darkRed},${darkGreen},${darkBlue})`
+        elementObj.minTempDiv.style.color = `rgb(${255},${green},${255})`
 
-        const humidityLevel = data.main.humidity;
+        document.getElementById('feelslike-info-container').style.backgroundColor = `rgba(${darkerRed},${0},${darkerBlue}, 0.2)`
+        document.getElementById('feelslike-info-container').style.color = `rgb(${0},${0},${blue})`
+
+        document.body.style.background = `linear-gradient(191deg, rgba(${blue}, ${green}, ${red}, 0.3), rgb(${red},${green}, ${blue})`;
+
+        const humidityLevel = data.main.humidity;;
 
         if (humidityLevel < 40) {
-            elementObj.humidityDiv.style.backgroundColor = 'yellow';
-            elementObj.humidityDiv.style.color = 'darkyellow';
+            elementObj.humidityDiv.classList.add('low-humidity');
         } else if (humidityLevel < 60) {
-            elementObj.humidityDiv.style.backgroundColor = 'lightgreen';
-            elementObj.humidityDiv.style.color = 'darkgreen';
+            elementObj.humidityDiv.classList.add('medium-humidity');
         } else {
-            elementObj.humidityDiv.style.background = 'lightblue url("../img/humidity.jpeg")';
-            elementObj.humidityDiv.style.color = 'darkblue';
+            elementObj.humidityDiv.classList.add('high-humidity');
         }
 
     }

@@ -6,7 +6,6 @@ const displayController = (() => {
 
     function gatherData() {
         return new Promise((resolve, reject) => {
-            setTimeout(() => resolve(1), 1000);
             const cityData = document.getElementById('city-input').value ;
             const measureUnit = document.querySelector('input[name="measure"]:checked').value;
             if (cityData) {
@@ -100,6 +99,7 @@ const displayController = (() => {
 
     async function displaySearchForm() {
         removeResultIfPresent();
+        document.body.style.backgroundColor = 'white';
         if (! document.getElementById('search-form')) {
             const form = await forms.search();
             form.submitBtn.addEventListener('click', handleForm);
