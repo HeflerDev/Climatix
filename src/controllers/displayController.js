@@ -99,7 +99,7 @@ const displayController = (() => {
 
     async function displaySearchForm() {
         removeResultIfPresent();
-        document.body.style.backgroundColor = 'white';
+        document.body.style.background = 'none';
         if (! document.getElementById('search-form')) {
             const form = await forms.search();
             form.submitBtn.addEventListener('click', handleForm);
