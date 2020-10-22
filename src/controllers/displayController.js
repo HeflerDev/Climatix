@@ -15,28 +15,28 @@ const displayController = (() => {
     });
   }
 
-  async function displaySearchResult(temp) {
-    const containers = await content.forecast(temp);
+  const displaySearchResult = (temp) => {
+    const containers = content.forecast(temp);
     styleController.applyDinamicStyle(containers, temp.data);
 
 
     document.getElementById('search-form-container').remove();
     content.removeLoading();
-  }
+  };
 
-  function swapSearchBtnText() {
+  const swapSearchBtnText = () => {
     const check = document.getElementById('show-form-btn');
     if (check.textContent === 'Search') {
       check.textContent = 'Make another search';
     }
-  }
+  };
 
-  function removeResultIfPresent() {
+  const removeResultIfPresent = () => {
     const check = document.getElementById('forecast-container');
     if (check) { check.remove(); }
-  }
+  };
 
-  function convertValue(value, unit) {
+  const convertValue = (value, unit) => {
     try {
       if (unit === 'C') {
         const res = (value - 273.15).toFixed(2);
@@ -49,9 +49,9 @@ const displayController = (() => {
     } catch (err) {
       return ('Invalid');
     }
-  }
+  };
 
-  function handleForm() {
+  const handleForm = () => {
     content.loading();
     gatherData().then((obj) => {
       fetch(`http://api.openweathermap.org/data/2.5/weather?q=${obj.cityData}&APPID=72317f5668bade497a7edbd246f2df82`)
@@ -92,20 +92,20 @@ const displayController = (() => {
       content.removeLoading();
       throw new Error(err);
     });
-  }
+  };
 
-  async function displaySearchForm() {
+  const displaySearchForm = () => {
     removeResultIfPresent();
     document.body.style.background = 'none';
     if (!document.getElementById('search-form')) {
-      const form = await forms.search();
+      const form = forms.search();
       form.submitBtn.addEventListener('click', handleForm);
     } else {
       /* eslint-disable no-alert */
       alert('Form Already Displayed');
       /* eslint-enable no-alert */
     }
-  }
+  };
 
   document.getElementById('show-form-btn').addEventListener('click', displaySearchForm);
 

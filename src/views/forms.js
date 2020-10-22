@@ -9,10 +9,10 @@ const forms = (() => {
     }
   }
 
-  function removeErrors() {
+  const removeErrors = () => {
     const element = document.getElementById('err-container');
     if (element) { element.remove(); }
-  }
+  };
 
   const search = () => {
     render.container('search-form-container', 'content', 'box', 'div');

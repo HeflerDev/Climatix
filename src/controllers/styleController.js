@@ -1,5 +1,5 @@
 const styleController = (() => {
-  function generateColorArray() {
+  const generateColorArray = () => {
     const rgb = [[0, 0, 255]];
 
     while (rgb.length < 255) {
@@ -7,15 +7,15 @@ const styleController = (() => {
       rgb.push([i, Math.floor(i / 2), 255 - i]);
     }
     return rgb;
-  }
+  };
 
-  function convertData(temp) {
+  const convertData = (temp) => {
     let measure = Math.floor((temp - 273.15) * 1.6);
     const mod = 5;
     if (measure < 0) { measure = 0; }
     if (measure > 50) { measure = 50; }
     return measure * mod;
-  }
+  };
 
   const applyDinamicStyle = (elementObj, data) => {
     const temperatureScore = convertData(data.main.temp);
