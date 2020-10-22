@@ -23,13 +23,23 @@
   "homepage": "https://github.com/HeflerDev/Climatix#readme",
   "dependencies": {
     "babel-loader": "^8.1.0",
+    "country-region-dropdown-menu": "^2.2.0",
     "css-loader": "^4.3.0",
     "node-sass": "^4.14.1",
     "style-loader": "^1.3.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "file-loader": "^6.1.1",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.3",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-csstree-validator": "^1.8.0",
+    "stylelint-scss": "^3.17.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"

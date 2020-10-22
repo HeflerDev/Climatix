@@ -1,6 +1,241 @@
-$body-color: red;
+@import './reset.css' ;
+@import './framework.css' ;
+
+// Fonts Import
+//Zilla Slab
+//Megrim
+@import url('https://fonts.googleapis.com/css2?family=Megrim&family=Trade+Winds&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+$break-md: 768px;
+
+$color-primary-dark: rgb(40, 40, 40);
+$color-secondary-dark: rgb(80, 80, 80);
+$color-primary: rgb(100, 100, 100);
+$color-secondary: rgb(140, 140, 140);
+$color-accent: rgb(220, 220, 220);
+
+$border-primary: solid $color-primary-dark 1px;
+$border-secondary: solid $color-secondary 1px;
+$border-discreet: solid $color-secondary 1px;
+
+$radius-primary: 0.4rem;
+
+$margin-primary: 0.4rem;
+
+$font-zilla-slab: 'Zilla Slab', serif;
+$font-megrim: 'Megrim', cursive;
+$font-bebas: 'Bebas Neue', cursive;
 
 body {
-    color: $body-color;
-    height: 20px;
+  @media screen and (max-device-width: 375px) {
+    height: 100vh;
+  }
+}
+
+#forecast-container {
+  #forecast-results {
+    #forecast-temp-container {
+      padding-left: 0;
+      padding-right: 0;
+
+      #feelslike-info-container {
+        background: rgba(21, 21, 21, 0.5);
+      }
+
+      #forecast-temp-desc {
+        font-family: $font-zilla-slab;
+        color: $color-primary;
+        font-size: 1.2rem;
+      }
+
+      #forecast-temp {
+        transition: 0.1s;
+        font-family: $font-bebas;
+        font-size: 10rem;
+
+        @media screen and (max-device-width: $break-md) {
+          font-size: 5rem;
+        }
+
+        &:hover {
+          transition: 0.3s;
+          background-color: rgba(100, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}
+
+#forecast-mintemp-container {
+  #forecast-mintemp {
+    font-family: $font-bebas;
+    font-size: 1.2rem;
+
+    @media screen and (min-device-width: $break-md) {
+      font-size: 3rem;
+    }
+  }
+}
+
+#forecast-maxtemp-container {
+  #forecast-maxtemp {
+    font-family: $font-bebas;
+    font-size: 1.2rem;
+
+    @media screen and (min-device-width: $break-md) {
+      font-size: 3rem;
+    }
+  }
+}
+
+.high-humidity {
+  background-color: lightblue;
+  position: relative;
+  color: darkblue;
+
+  &::after {
+    content: "";
+    background: url(./humidity.png);
+    background-size: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    top: 0;
+    left: 8rem;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 100;
+  }
+}
+
+.low-humidity {
+  background-color: yellow;
+  position: relative;
+  color: brown;
+
+  &::after {
+    content: "";
+    background: url(./dry.png);
+    background-size: 40%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+  }
+}
+
+.medium-humidity {
+  background-color: lightgreen;
+  position: relative;
+  color: darkgreen;
+
+  &::after {
+    content: "";
+    background: url(./medium.png);
+    background-size: 25%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 8rem;
+    position: absolute;
+  }
+}
+
+.btn-primary {
+  border-radius: $radius-primary;
+  transition: 0.1s;
+  width: 75%;
+  color: $color-secondary;
+  font-family: $font-zilla-slab;
+  border: none;
+
+  &:hover {
+    color: $color-accent;
+    transition: 0.4s;
+    background-color: $color-primary-dark;
+    transform: scale(1.05);
+  }
+
+  &:focus {
+    color: $color-accent;
+    transition: 0.4s;
+    background-color: $color-primary-dark;
+    transform: scale(1.05);
+    outline: none;
+  }
+}
+
+.submit-btn {
+  transition: 0.1s;
+  font-family: $font-zilla-slab;
+  margin: 10px;
+  border: $border-primary;
+  cursor: pointer;
+
+  &:hover {
+    transition: 0.1s;
+    border: $border-secondary;
+    color: $color-secondary;
+  }
+}
+
+.data-container {
+  border-radius: $radius-primary;
+  margin: $margin-primary;
+}
+
+.no-spacing {
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  justify-content: center;
+
+  label {
+    font-family: $font-zilla-slab;
+    color: $color-primary-dark;
+    margin-bottom: 0;
+  }
+
+  .field-input {
+    font-family: $font-zilla-slab;
+    transition: 0.5s;
+    border: none;
+    border-bottom: $border-secondary;
+
+    &:focus {
+      transition: 0.5s;
+      outline: none;
+      border-bottom: $border-primary;
+    }
+  }
+}
+
+header {
+  display: flex;
+  justify-content: center;
+
+  span {
+    color: $color-primary;
+    transition: 0.2s;
+    font-family: $font-megrim;
+    font-size: 2rem;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-primary-dark;
+      transition: 0.2s;
+      transform: scale(1.1);
+    }
+  }
 }
